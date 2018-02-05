@@ -1,0 +1,52 @@
+/**
+* Jersey City Studio Demo
+*/
+
+namespace org.jcsdemo.com
+
+asset Order identified by orderId {
+  o String orderId
+  o String temp
+  o DateTime receivedDate
+  o Double price
+  o Boolean exception 
+  o Double quantity
+  o String location
+  --> Owner owner
+} 
+
+participant Owner identified by ownerId{
+  o String name
+  o String ownerId
+}
+
+// participant Retailer identified by retailerId extends Owner {
+//   o String retailerId
+// } 
+
+// participant Distributor identified by disributorId extends Owner {
+//   o String disributorId
+// } 
+
+// participant Processor identified by processorId extends Owner {
+//   o String processorId
+// } 
+
+transaction retailerPlaceOrder {
+  --> Order order
+  --> Owner owner
+}
+
+transaction distributorPlaceOrder {
+  --> Order order
+}
+
+transaction shipToDistributor {
+  --> Order order
+}
+
+transaction shipToRetailer {
+  --> Order order
+}
+
+how to make http requests in python.
