@@ -12,6 +12,7 @@ asset Order identified by orderId {
   o Boolean exception 
   o Double quantity
   o String location
+  o String status
   --> Owner owner
 } 
 
@@ -39,14 +40,41 @@ transaction retailerPlaceOrder {
 
 transaction distributorPlaceOrder {
   --> Order order
+  --> Owner owner
 }
 
 transaction shipToDistributor {
   --> Order order
+  --> Owner owner
+  o String temp
+  o String location
+  o Boolean exception
+  o String status
 }
 
 transaction shipToRetailer {
   --> Order order
+  --> Owner owner
+  o String temp
+  o String location
+  o Boolean exception
+  o String status
 }
 
-how to make http requests in python.
+transaction inTransitToDistributor {
+  --> Order order
+  o String temp
+  o String location
+  o Boolean exception
+  o String status
+}
+
+transaction inTransitToRetailer {
+  --> Order order
+  o String temp
+  o String location
+  o Boolean exception
+  o String status
+}
+
+
