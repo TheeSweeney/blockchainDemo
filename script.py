@@ -32,16 +32,42 @@ while (text != '4'):
             "$class": "org.jcsdemo.com.retailerPlaceOrder",
             "order": 'O-1001',
             "owner": 'D-1001'
-        })
+        }) 
 
         print post
     elif text == '2':
-        print 2
+        print 'Who would you like to ship to: \n1) Distributor \n2) Retailer'
+        asn = raw_input('')
+        if asn == '1' :
+            post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.inTransitToDistributor', data = {
+                "$class": "org.jcsdemo.com.inTransitToDistributor",
+                "order": "O-1001",
+                "temp": "30",
+                "location": "T-1001",
+                "exception": "False",
+                "status": "in transit"
+            })
+            print post
+        if asn == '2' :
+            post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.inTransitToRetailer', data = {
+                "$class": "org.jcsdemo.com.inTransitToRetailer",
+                "order": "O-1001",
+                "temp": "35",
+                "location": "T-1002",
+                "exception": "True",
+                "status": "in transit"
+            })
+
+            print post
     elif text == '3':
-        post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.shipToRetailer', data = {
-            "$class": "org.jcsdemo.com.shipToRetailer",
+        post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.receivedByRetailer', data = {
+            "$class": "org.jcsdemo.com.receivedByRetailer",
             "order": 'O-1001',
-            "owner": 'R-1001'
+            "owner": 'R-1001',
+            "temp": "31",
+            "location": "R-1001",
+            "exception": false,
+            "status": "received"
         })
 
         print post
