@@ -50,7 +50,7 @@ function retailerPlaceOrder(entry) {
             break;
         }
     }
-    
+
     return getAssetRegistry('org.jcsdemo.com.Order')
         .then(function (assetRegistry) {
             return assetRegistry.update(entry.order);
@@ -68,6 +68,17 @@ function retailerPlaceOrder(entry) {
     entry.order.temp = entry.temp
     entry.order.location = entry.location
     entry.order.status = entry.status
+
+    for (var i = 0; i < len; i++){
+        if(entry.temp[i] > 35 || entry.temp[i] < 30){
+            entry.order.exception = true;
+            entry.order.exceptionTime = entry.time[i]
+            entry.order.exceptionLocation = entry.location[i]
+            entry.order.exceptionTemp = entry.temp[i]
+            break;
+        }
+    }
+    
     return getAssetRegistry('org.jcsdemo.com.Order')
         .then(function (assetRegistry) {
             return assetRegistry.update(entry.order);
@@ -84,6 +95,17 @@ function retailerPlaceOrder(entry) {
  	entry.order.temp = entry.temp
     entry.order.location = entry.location
     entry.order.status = entry.status
+
+    for (var i = 0; i < len; i++){
+        if(entry.temp[i] > 35 || entry.temp[i] < 30){
+            entry.order.exception = true;
+            entry.order.exceptionTime = entry.time[i]
+            entry.order.exceptionLocation = entry.location[i]
+            entry.order.exceptionTemp = entry.temp[i]
+            break;
+        }
+    }
+    
     return getAssetRegistry('org.jcsdemo.com.Order')
         .then(function (assetRegistry) {
             return assetRegistry.update(entry.order);
@@ -100,6 +122,17 @@ function retailerPlaceOrder(entry) {
     entry.order.temp = entry.temp
     entry.order.location = entry.location
     entry.order.status = entry.status
+
+    for (var i = 0; i < len; i++){
+        if(entry.temp[i] > 35 || entry.temp[i] < 30){
+            entry.order.exception = true;
+            entry.order.exceptionTime = entry.time[i]
+            entry.order.exceptionLocation = entry.location[i]
+            entry.order.exceptionTemp = entry.temp[i]
+            break;
+        }
+    }
+    
     return getAssetRegistry('org.jcsdemo.com.Order')
         .then(function (assetRegistry) {
             return assetRegistry.update(entry.order);
