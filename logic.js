@@ -40,6 +40,10 @@ function retailerPlaceOrder(entry) {
     entry.order.location = entry.location[len-1]
     entry.order.status = entry.status
     entry.order.exception = false
+    entry.order.exceptionTime = ''
+    entry.order.exceptionLocation = ''
+    entry.order.exceptionTemp = ''
+    
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
@@ -68,6 +72,10 @@ function retailerPlaceOrder(entry) {
     entry.order.temp = entry.temp
     entry.order.location = entry.location
     entry.order.status = entry.status
+    entry.order.exception = false
+    entry.order.exceptionTime = ''
+    entry.order.exceptionLocation = ''
+    entry.order.exceptionTemp = ''
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
@@ -95,6 +103,10 @@ function retailerPlaceOrder(entry) {
  	entry.order.temp = entry.temp
     entry.order.location = entry.location
     entry.order.status = entry.status
+    entry.order.exception = false
+    entry.order.exceptionTime = ''
+    entry.order.exceptionLocation = ''
+    entry.order.exceptionTemp = ''
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
@@ -122,6 +134,10 @@ function retailerPlaceOrder(entry) {
     entry.order.temp = entry.temp
     entry.order.location = entry.location
     entry.order.status = entry.status
+    entry.order.exception = false
+    entry.order.exceptionTime = ''
+    entry.order.exceptionLocation = ''
+    entry.order.exceptionTemp = ''
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
