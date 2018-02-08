@@ -10,7 +10,7 @@ asset Order identified by orderId {
   o DateTime dateplaced
   o Double price
   o Boolean exception 
-  o DateTime exceptionTime
+  o String exceptionTime
   o String exceptionTemp
   o String exceptionLocation
   o Double quantity
@@ -18,11 +18,6 @@ asset Order identified by orderId {
   o String status
   --> Owner owner
 } 
-
-abstract asset Temp {
-  o String temp
-  o DateTime time
-}
 
 participant Owner identified by ownerId{
   o String name
@@ -44,7 +39,7 @@ transaction receivedByDistributor {
   --> Owner owner
   o String[] temp
   o String[] location
-  o DateTime[] time
+  o String[] time
   o String status
 }
 
@@ -53,7 +48,7 @@ transaction receivedByRetailer {
   --> Owner owner
   o String[] temp
   o String[] location
-  o DateTime[] time
+  o String[] time
   o String status
 }
 
@@ -62,7 +57,7 @@ transaction inTransitToDistributor {
   --> Order order
   o String[] temp
   o String[] location
-  o DateTime[] time
+  o String[] time
   o String status
 }
 
@@ -70,7 +65,7 @@ transaction inTransitToRetailer {
   --> Order order
   o String[] temp
   o String[] location
-  o DateTime[] time
+  o String[] time
   o String status
 }
 

@@ -15,22 +15,25 @@ while (text != '4'):
     if text == '1':
         post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.Order', data={
             "$class": "org.jcsdemo.com.Order",
-            "orderId": "O-1001",
-            "temp": "12",
-            "receivedDate": "2018-02-05T17:35:04.565Z",
-            "price": 10,
-            "exception": 'false',
-            "quantity": 100,
+            "orderId": "O-1002",
+            "temp": "32",
+            "dateplaced": "2018-02-08T21:41:14.424Z",
+            "price": 120,
+            "exception": "false",
+            "exceptionTime": " ",
+            "exceptionTemp": " ",
+            "exceptionLocation": " ",
+            "quantity": 10,
             "location": "D-1001",
-            "status": "order placed",
-            "owner": 'D-1001'
+            "status": "Inventory",
+            "owner": "D-1001"
         })
 
         print post
 
         post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.retailerPlaceOrder', data={
             "$class": "org.jcsdemo.com.retailerPlaceOrder",
-            "order": 'O-1001',
+            "order": 'O-1002',
             "owner": 'D-1001'
         }) 
 
@@ -41,20 +44,20 @@ while (text != '4'):
         if asn == '1' :
             post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.inTransitToDistributor', data = {
                 "$class": "org.jcsdemo.com.inTransitToDistributor",
-                "order": "O-1001",
-                "temp": "30",
-                "location": "T-1001",
-                "exception": "False",
+                "order": "O-1002",
+                "temp": ["32", "31","33"],
+                "time": ["2018-02-08T2:41:14.424Z", "2018-02-08T10:41:14.424Z", "2018-02-08T21:41:14.424Z"],                
+                "location": ["T-1001", "T-1001", "T-1001"],
                 "status": "in transit"
             })
             print post
         if asn == '2' :
             post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.inTransitToRetailer', data = {
                 "$class": "org.jcsdemo.com.inTransitToRetailer",
-                "order": "O-1001",
-                "temp": "35",
-                "location": "T-1002",
-                "exception": "True",
+                "order": "O-1002",
+                "temp": ["40", "10", "100"],
+                "time": ["2018-02-08T2:41:14.424Z", "2018-02-08T10:41:14.424Z", "2018-02-08T21:41:14.424Z"],                
+                "location": ["T-1002", "T-1002", "T-1002"],
                 "status": "in transit"
             })
 
@@ -62,11 +65,11 @@ while (text != '4'):
     elif text == '3':
         post = requests.post('http://169.60.169.211:3000/api/org.jcsdemo.com.receivedByRetailer', data = {
             "$class": "org.jcsdemo.com.receivedByRetailer",
-            "order": 'O-1001',
+            "order": 'O-1002',
             "owner": 'R-1001',
-            "temp": "31",
-            "location": "R-1001",
-            "exception": false,
+            "temp": ["31", "30", "33"],
+            "time": ["2018-02-08T2:41:14.424Z", "2018-02-08T10:41:14.424Z", "2018-02-08T21:41:14.424Z"],            
+            "location": ["R-1001", "R-1001", "R-1001"],
             "status": "received"
         })
 

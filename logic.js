@@ -39,10 +39,7 @@ function retailerPlaceOrder(entry) {
     entry.order.temp = entry.temp[len-1]
     entry.order.location = entry.location[len-1]
     entry.order.status = entry.status
-    entry.order.exception = false
-    entry.order.exceptionTime = ''
-    entry.order.exceptionLocation = ''
-    entry.order.exceptionTemp = ''
+    entry.order.exception = entry.order.exception ? true : false
     
 
     for (var i = 0; i < len; i++){
@@ -68,14 +65,12 @@ function retailerPlaceOrder(entry) {
  */
 
  function receivedByRetailer(entry) {
+    var len = entry.temp.length;
     entry.order.owner = entry.owner
-    entry.order.temp = entry.temp
-    entry.order.location = entry.location
+    entry.order.temp = entry.temp[len-1]
+    entry.order.location = entry.location[len-1]
     entry.order.status = entry.status
-    entry.order.exception = false
-    entry.order.exceptionTime = ''
-    entry.order.exceptionLocation = ''
-    entry.order.exceptionTemp = ''
+    entry.order.exception = entry.order.exception ? true : false
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
@@ -100,13 +95,11 @@ function retailerPlaceOrder(entry) {
  */
 
  function inTransitToDistributor(entry) {
- 	entry.order.temp = entry.temp
-    entry.order.location = entry.location
+    var len = entry.temp.length;
+ 	entry.order.temp = entry.temp[len-1]
+    entry.order.location = entry.location[len-1]
     entry.order.status = entry.status
-    entry.order.exception = false
-    entry.order.exceptionTime = ''
-    entry.order.exceptionLocation = ''
-    entry.order.exceptionTemp = ''
+    entry.order.exception = entry.order.exception ? true : false
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
@@ -131,13 +124,11 @@ function retailerPlaceOrder(entry) {
  */
 
  function inTransitToRetailer(entry) {
-    entry.order.temp = entry.temp
-    entry.order.location = entry.location
+    var len = entry.temp.length;
+    entry.order.temp = entry.temp[len-1]
+    entry.order.location = entry.location[len-1]
     entry.order.status = entry.status
-    entry.order.exception = false
-    entry.order.exceptionTime = ''
-    entry.order.exceptionLocation = ''
-    entry.order.exceptionTemp = ''
+    entry.order.exception = entry.order.exception ? true : false
 
     for (var i = 0; i < len; i++){
         if(entry.temp[i] > 35 || entry.temp[i] < 30){
