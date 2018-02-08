@@ -7,31 +7,27 @@ namespace org.jcsdemo.com
 asset Order identified by orderId {
   o String orderId
   o String temp
-  o DateTime receivedDate
+  o DateTime dateplaced
   o Double price
   o Boolean exception 
+  o DateTime exceptionTime
+  o String exceptionTemp
+  o String exceptionLocation
   o Double quantity
   o String location
   o String status
   --> Owner owner
 } 
 
+abstract asset Temp {
+  o String temp
+  o DateTime time
+}
+
 participant Owner identified by ownerId{
   o String name
   o String ownerId
 }
-
-// participant Retailer identified by retailerId extends Owner {
-//   o String retailerId
-// } 
-
-// participant Distributor identified by disributorId extends Owner {
-//   o String disributorId
-// } 
-
-// participant Processor identified by processorId extends Owner {
-//   o String processorId
-// } 
 
 transaction retailerPlaceOrder {
   --> Order order
@@ -43,38 +39,38 @@ transaction distributorPlaceOrder {
   --> Owner owner
 }
 
-transaction shipToDistributor {
+transaction receivedByDistributor {
   --> Order order
   --> Owner owner
-  o String temp
-  o String location
-  o Boolean exception
+  o String[] temp
+  o String[] location
+  o DateTime[] time
   o String status
 }
 
-transaction shipToRetailer {
+transaction receivedByRetailer {
   --> Order order
   --> Owner owner
-  o String temp
-  o String location
-  o Boolean exception
+  o String[] temp
+  o String[] location
+  o DateTime[] time
   o String status
 }
+
 
 transaction inTransitToDistributor {
   --> Order order
-  o String temp
-  o String location
-  o Boolean exception
+  o String[] temp
+  o String[] location
+  o DateTime[] time
   o String status
 }
 
 transaction inTransitToRetailer {
   --> Order order
-  o String temp
-  o String location
-  o Boolean exception
+  o String[] temp
+  o String[] location
+  o DateTime[] time
   o String status
 }
-
 
